@@ -1,0 +1,384 @@
+/* --- БАЗОВЫЕ НАСТРОЙКИ И ТЕМЫ --- */
+:root {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  color: #333;
+  background-color: #f4f7f6;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    color: #ecf0f1;
+    background-color: #1a202c;
+  }
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background-color: #f4f7f6;
+  display: flex;
+  justify-content: center;
+}
+
+@media (prefers-color-scheme: dark) {
+  body { background-color: #1a202c; }
+}
+
+#root {
+  display: flex;
+  justify-content: center;
+  min-height: 100vh;
+  width: 100%;
+}
+
+/* --- ОБЩИЙ КОНТЕЙНЕР --- */
+.app-container {
+  width: 100%;
+  max-width: 500px;
+  padding: 20px;
+  box-sizing: border-box;
+  position: relative;
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* --- ЗАГОЛОВКИ --- */
+header {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+header h1 {
+  margin: 0;
+  font-size: 2rem;
+  color: #2c3e50;
+}
+
+@media (prefers-color-scheme: dark) {
+  header h1 { color: #ecf0f1; }
+}
+
+header p {
+  margin: 5px 0 0;
+  color: #7f8c8d;
+}
+
+.topic-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+  margin-top: 20px;
+}
+
+.topic-header h1 {
+  font-size: 1.5rem;
+  margin: 0;
+  background: rgba(0, 0, 0, 0.05);
+  padding: 6px 16px;
+  border-radius: 20px;
+}
+
+@media (prefers-color-scheme: dark) {
+  .topic-header h1 { color: #ecf0f1; background: rgba(255, 255, 255, 0.1); }
+}
+
+/* Кнопка Назад */
+.floating-back {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  font-size: 1rem;
+  font-weight: 500;
+  background: rgba(0, 0, 0, 0.05);
+  padding: 8px 16px;
+  border-radius: 20px;
+  border: none;
+  color: #3498db;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.floating-back:hover { background: rgba(0, 0, 0, 0.1); }
+@media (prefers-color-scheme: dark) {
+  .floating-back { background: rgba(255, 255, 255, 0.1); }
+  .floating-back:hover { background: rgba(255, 255, 255, 0.2); }
+}
+
+/* --- КНОПКИ ДЕЙСТВИЙ --- */
+.add-btn, .train-btn {
+  width: 100%;
+  padding: 15px;
+  color: white;
+  border: none;
+  border-radius: 12px;
+  font-size: 1.1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.add-btn { background-color: #3498db; }
+.add-btn:hover { background-color: #2980b9; }
+
+.train-btn { background-color: #27ae60; margin-top: 10px; }
+.train-btn:hover { background-color: #219150; }
+
+/* --- СПИСКИ --- */
+.topics-list, .cards-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.topic-card, .card-item {
+  background: white;
+  padding: 16px;
+  border-radius: 12px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+
+@media (prefers-color-scheme: dark) {
+  .topic-card, .card-item { background: #2d3748; box-shadow: 0 2px 8px rgba(0,0,0,0.3); }
+}
+
+.topic-card { cursor: pointer; transition: transform 0.1s; }
+.topic-card:hover { transform: translateY(-2px); }
+
+.topic-info h3, .ru-text {
+  margin: 0 0 4px;
+  font-size: 1.2rem;
+  color: #2c3e50;
+}
+
+@media (prefers-color-scheme: dark) {
+  .topic-info h3, .ru-text { color: #ecf0f1; }
+}
+
+.topic-info span {
+  font-size: 0.9rem;
+  color: #95a5a6;
+}
+
+/* --- ИКОНКИ ДЕЙСТВИЙ --- */
+.card-actions { display: flex; gap: 5px; }
+
+.icon-btn {
+  background: transparent;
+  border: none;
+  font-size: 1.1rem;
+  cursor: pointer;
+  opacity: 0.6;
+  transition: opacity 0.2s, transform 0.1s;
+  padding: 5px;
+  color: inherit;
+}
+.icon-btn:hover { opacity: 1; transform: scale(1.1); }
+
+.en-text-revealed {
+  font-size: 0.95rem;
+  color: #3498db;
+  margin-top: 5px;
+  font-weight: 500;
+  animation: fadeIn 0.3s ease-out;
+}
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-3px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* --- ФОРМЫ --- */
+.card-form {
+  background: white;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+@media (prefers-color-scheme: dark) {
+  .card-form { background: #2d3748; }
+}
+
+.card-form input {
+  padding: 12px;
+  border: 1px solid #bdc3c7;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-family: inherit;
+}
+@media (prefers-color-scheme: dark) {
+  .card-form input { background: #1a202c; color: white; border-color: #4a5568; }
+}
+.card-form input:focus { outline: none; border-color: #3498db; }
+
+.form-actions { display: flex; gap: 10px; }
+
+.save-btn {
+  flex: 1; padding: 12px; background-color: #27ae60; color: white;
+  border: none; border-radius: 8px; font-weight: bold; cursor: pointer;
+}
+.save-btn:hover { background-color: #219150; }
+
+.cancel-btn {
+  flex: 1; padding: 12px; background-color: #ecf0f1; color: #333;
+  border: none; border-radius: 8px; font-weight: bold; cursor: pointer;
+}
+@media (prefers-color-scheme: dark) {
+  .cancel-btn { background-color: #4a5568; color: white; }
+}
+.cancel-btn:hover { background-color: #bdc3c7; }
+
+/* --- ЭКРАН ТРЕНИРОВКИ --- */
+.training-screen {
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  min-height: 60vh; text-align: center;
+}
+.prompt-text {
+  font-size: 2rem; font-weight: bold; color: #2c3e50; margin-bottom: 40px; line-height: 1.3;
+}
+@media (prefers-color-scheme: dark) { .prompt-text { color: #ecf0f1; } }
+
+.mic-section { display: flex; flex-direction: column; align-items: center; margin-bottom: 20px; }
+.mic-btn {
+  width: 100px; height: 100px; border-radius: 50%; border: none;
+  background-color: #e74c3c; color: white; font-size: 3rem; cursor: pointer;
+  box-shadow: 0 4px 15px rgba(231, 76, 60, 0.4); transition: all 0.2s;
+  display: flex; align-items: center; justify-content: center;
+}
+.mic-btn:hover { transform: scale(1.05); }
+.mic-btn.listening { background-color: #c0392b; animation: pulse 1.5s infinite; }
+@keyframes pulse {
+  0% { box-shadow: 0 0 0 0 rgba(231, 76, 60, 0.7); }
+  70% { box-shadow: 0 0 0 20px rgba(231, 76, 60, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(231, 76, 60, 0); }
+}
+.mic-section p { margin-top: 15px; font-weight: 500; color: #7f8c8d; }
+
+.hint-section { margin-top: 10px; margin-bottom: 20px; }
+.hint-btn {
+  background: none; border: 1px solid #bdc3c7; color: #7f8c8d;
+  padding: 8px 16px; border-radius: 20px; cursor: pointer; font-size: 0.9rem;
+}
+.hint-btn:hover { background: rgba(0,0,0,0.05); }
+@media (prefers-color-scheme: dark) {
+  .hint-btn { border-color: #4a5568; color: #a0aec0; }
+  .hint-btn:hover { background: rgba(255,255,255,0.1); }
+}
+.hint-text { color: #f39c12; font-weight: bold; font-size: 1.1rem; }
+
+.result-box {
+  width: 100%; padding: 20px; border-radius: 12px; background: white;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1); animation: slideUp 0.3s ease-out;
+}
+@media (prefers-color-scheme: dark) { .result-box { background: #2d3748; } }
+@keyframes slideUp {
+  from { transform: translateY(20px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+.result-box h3 { margin-top: 0; }
+.result-box.success { border-top: 5px solid #27ae60; }
+.result-box.fail { border-top: 5px solid #e74c3c; }
+.expected-text { font-weight: bold; color: #2c3e50; margin: 15px 0; }
+@media (prefers-color-scheme: dark) { .expected-text { color: #ecf0f1; } }
+
+.result-actions { display: flex; gap: 10px; margin-top: 20px; }
+.listen-btn, .next-btn {
+  flex: 1; padding: 12px; border: none; border-radius: 8px;
+  font-weight: bold; cursor: pointer; font-size: 1rem;
+}
+.listen-btn { background-color: #f1c40f; color: #333; }
+.next-btn { background-color: #3498db; color: white; }
+.listen-btn:hover { background-color: #f39c12; }
+.next-btn:hover { background-color: #2980b9; }
+
+/* --- СТИЛИ ДЛЯ КАСТОМНОЙ МОДАЛКИ --- */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  backdrop-filter: blur(3px);
+}
+
+.modal-content {
+  background: white;
+  padding: 25px;
+  border-radius: 16px;
+  width: 90%;
+  max-width: 400px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  animation: slideUp 0.2s ease-out;
+  text-align: center;
+}
+
+@media (prefers-color-scheme: dark) {
+  .modal-content { background: #2d3748; color: #ecf0f1; }
+}
+
+.modal-content h2 {
+  margin-top: 0;
+  font-size: 1.4rem;
+  color: #2c3e50;
+}
+
+@media (prefers-color-scheme: dark) {
+  .modal-content h2 { color: #ecf0f1; }
+}
+
+.modal-content p {
+  color: #7f8c8d;
+  margin-bottom: 25px;
+  font-size: 1rem;
+  line-height: 1.4;
+}
+
+.modal-actions {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+}
+
+.modal-actions button {
+  flex: 1;
+  padding: 12px;
+  border: none;
+  border-radius: 8px;
+  font-weight: bold;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background-color 0.2s;
+}
+/* Стиль для опасных кнопок (удаление) */
+.danger-btn {
+  flex: 1;
+  padding: 12px;
+  background-color: #e74c3c; /* Красный цвет */
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-weight: bold;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background-color 0.2s;
+}
+
+.danger-btn:hover {
+  background-color: #c0392b; /* Темно-красный при наведении */
+}
